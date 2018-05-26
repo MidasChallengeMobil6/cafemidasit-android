@@ -29,7 +29,7 @@
             app:itemBackground="@color/colorPrimary"
             app:itemIconTint="@drawable/bottom_section_color"
             app:itemTextColor="@drawable/bottom_section_color"
-            app:menu="@menu/menu_bottom_navigation" />
+            app:menu="@menu/admin_bottom_navigation" />
 
 </android.support.constraint.ConstraintLayout>
 

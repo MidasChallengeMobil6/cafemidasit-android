@@ -7,17 +7,23 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.midasit.challenge.R;
-import com.midasit.challenge.model.Item;
+import com.midasit.challenge.application.ApplicationController;
 import com.midasit.challenge.model.User;
+import com.midasit.challenge.model.UserResponseObject;
 import com.midasit.challenge.ui.admin.cafemenu.tabs.ItemAdapter;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by ichaeeun on 2018. 5. 26..
@@ -27,6 +33,7 @@ public class ManageMemberFragment extends Fragment {
 
     RecyclerView recyclerView;
     ItemAdapter itemAdapter;
+    UserItemAdapter userItemAdapter;
 
     public ManageMemberFragment() {
         // Required empty public constructor
@@ -55,10 +62,39 @@ public class ManageMemberFragment extends Fragment {
         });
 
         recyclerView = view.findViewById(R.id.recyclerview);
-        UserItemAdapter userItemAdapter= new UserItemAdapter(getDummyList());
-        recyclerView.setAdapter(userItemAdapter);
+
 
         Toast.makeText(getActivity(), "onViewCreated", Toast.LENGTH_LONG).show();
+
+
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Call<UserResponseObject> getListData = ApplicationController.getInstance().getNetworkService().getUsers();
+        getListData.enqueue(new Callback<UserResponseObject>() {
+            @Override
+            public void onResponse(Call<UserResponseObject> call, Response<UserResponseObject> response) {
+                if(response.isSuccessful()){ // 응답코드 200
+
+                    ArrayList<User> user  = response.body().data;
+                    userItemAdapter = new UserItemAdapter(user, getContext());
+                    recyclerView.setAdapter(userItemAdapter);
+                }
+                else
+                    Log.i("myTag","2 들어가고싶다..");
+            }
+
+            @Override
+            public void onFailure(Call<UserResponseObject> call, Throwable t) {
+                Toast.makeText(getActivity(), "네트워크 연결을 확인해주세요", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     private ArrayList<User> getDummyList(){

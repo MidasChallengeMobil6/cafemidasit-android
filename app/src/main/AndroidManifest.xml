@@ -16,14 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.admin.AdminActivity">
+
+        </activity>
+        <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.LoginActivity"></activity>
-        <activity android:name=".ui.admin.managemember.RegisterActivity"></activity>
+        <activity android:name=".ui.admin.managemember.RegisterActivity">
+        </activity>
         <activity android:name=".ui.admin.cafemenu.SearchActivity"></activity>
         <activity
             android:name=".ui.admin.cafemenu.detail.AdminMenuDetailModifiActivity"
@@ -41,6 +44,10 @@
             android:parentActivityName=".ui.admin.AdminActivity">
             <meta-data android:name="android.supoort.PARENT_ACTIVITY"
                 android:value=".ui.admin.AdminActivity"/>
+        </activity>
+
+        <activity android:name=".ui.member.MemberActivity">
+            
         </activity>
 
     </application>

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 
-    public int itemId;
+    public int id;
     public String name;
     public String img;
     public int price;
@@ -13,8 +13,8 @@ public class Item implements Serializable {
 
     }
 
-    public Item(int itemId, String name, String img, int price) {
-        this.itemId = itemId;
+    public Item(int id, String name, String img, int price) {
+        this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;

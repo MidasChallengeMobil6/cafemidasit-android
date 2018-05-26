@@ -15,11 +15,11 @@
 
 
     <ImageView
-        android:id="@+id/img_profile"
-        android:scaleType="centerCrop"
+        android:id="@+id/item_img"
+        android:scaleType="fitCenter"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/test_img_3" />
+        app:srcCompat="@drawable/americano" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -34,6 +34,7 @@
             android:text="아메리카노"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"/>
@@ -42,6 +43,7 @@
         <TextView
             android:id="@+id/price_tv"
             android:textSize="14sp"
+            android:layout_gravity="center"
             android:text="2500원"
             android:maxLines="2"
             android:maxLength="5"

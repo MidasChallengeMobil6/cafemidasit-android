@@ -1,38 +1,36 @@
-package com.midasit.challenge.ui.admin;
+package com.midasit.challenge.ui.member;
 
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.midasit.challenge.R;
+import com.midasit.challenge.ui.admin.BottomNavigationViewHelper;
 import com.midasit.challenge.ui.admin.cafemenu.MenuFragment;
 import com.midasit.challenge.ui.admin.managemember.ManageMemberFragment;
 
-public class AdminActivity extends AppCompatActivity {
-
-    FragmentTransaction fragmentTransaction;
+public class MemberActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_admin);
+        setContentView(R.layout.activity_main_member);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationview);
         BottomNavigationViewHelper bottomNavigationViewHelper = new BottomNavigationViewHelper();
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         MenuFragment menuFragment = new MenuFragment();
-        fragmentTransaction.add(R.id.container, menuFragment);
+        fragmentTransaction.replace(R.id.container, menuFragment);
         fragmentTransaction.commit();
 
 
     }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -43,7 +41,6 @@ public class AdminActivity extends AppCompatActivity {
                 FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction1.replace(R.id.container, orderFragment);
                 fragmentTransaction1.commit();
-
                 return true;
             case R.id.search:
                 MenuFragment menuFragment = new MenuFragment();

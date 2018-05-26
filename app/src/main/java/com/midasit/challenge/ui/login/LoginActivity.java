@@ -1,6 +1,7 @@
 package com.midasit.challenge.ui.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.midasit.challenge.application.ApplicationController;
 import com.midasit.challenge.model.LoginRequestObject;
 import com.midasit.challenge.model.LoginResponseObject;
 import com.midasit.challenge.ui.admin.AdminActivity;
+import com.midasit.challenge.ui.member.MemberActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,10 +56,27 @@ public class LoginActivity extends AppCompatActivity {
                         mTextInputUsername.setError(null);
                         mTextInputPassword.setError(null);
 
-                        //TODO:
-                        startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                        String token = responseObject.data.getToken();
+                        String authority = responseObject.data.getAdmin();
 
-                        Log.d("AAA", "로그인 성공" + responseObject.token);
+
+                        Log.d("AAA", "로그인 성공" + token + authority);
+
+                        SharedPreferences pref = getSharedPreferences("token", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("token", responseObject.data.getToken());
+                        editor.putString("authority",responseObject.data.getAdmin() );
+                        editor.commit();
+
+                        if (authority.equals("member")) {
+                            startActivity(new Intent(getApplicationContext(), MemberActivity.class));
+                        } else if (authority.equals("admin")) {
+                            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                        }
+
+                        //TODO:
+
+
                         return;
 
 

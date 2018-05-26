@@ -1,16 +1,13 @@
-package com.midasit.challenge.ui.admin.cafemenu.tabs;
+package com.midasit.challenge.ui.member.cafemenu.tabs;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
 import com.midasit.challenge.R;
-import com.midasit.challenge.application.ApplicationController;
 import com.midasit.challenge.model.Item;
 import com.midasit.challenge.ui.admin.cafemenu.detail.AdminMenuDetailActivity;
 
@@ -56,18 +53,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder>{
                 mContext.startActivity(intent);
             }
         });
-
-        int id = item.id;
-
-
-        String url = ApplicationController.baseUrl + "/images/" + id + ".png";
-
-        Log.d("ItemAdapter", url);
-        Glide
-                .with(mContext)
-                .load(url)
-                .into(holder.item_img);
-
     }
 
     @Override

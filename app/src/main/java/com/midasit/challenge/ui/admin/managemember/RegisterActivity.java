@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.midasit.challenge.R;
 import com.midasit.challenge.application.ApplicationController;
+import com.midasit.challenge.model.RegisterRequsetObject;
+import com.midasit.challenge.model.RegisterResponseObject;
 import com.midasit.challenge.model.SignUpRequsetObject;
 import com.midasit.challenge.model.SignUpResponseObject;
 
@@ -28,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout mTextInputUsername;
     private TextInputLayout mTextInputPassword;
     private TextInputLayout mTextInputPasswordConfirm;
+    private TextInputLayout mTextInputBirthday;
+    private TextInputLayout mTextInputPhone;
     private Button mSignUpButton;
 
 
@@ -42,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
         mTextInputPassword = findViewById(R.id.text_input_password);
         mTextInputPasswordConfirm = findViewById(R.id.text_input_password_confirm);
         mSignUpButton = findViewById(R.id.sign_up_button);
+        mTextInputBirthday = findViewById(R.id.text_input_birthday);
+        mTextInputPhone = findViewById(R.id.text_input_phone);
 
         TextInputEditText NameEditText = (TextInputEditText) mTextInputName.getEditText();
         TextInputEditText emailEditText = (TextInputEditText) mTextInputEmail.getEditText();
@@ -70,12 +76,17 @@ public class RegisterActivity extends AppCompatActivity {
             String username = mTextInputUsername.getEditText().getText().toString().trim();
             String password = mTextInputPassword.getEditText().getText().toString().trim();
 
-            SignUpRequsetObject signUpRequsetObject = new SignUpRequsetObject(name, username, email, password);
+            String birthday = mTextInputBirthday.getEditText().getText().toString().trim();
+            String phone = mTextInputPhone.getEditText().getText().toString().trim();
+
+            Log.d("AAA", name + ":" + email + ":" + username + ":" + password + ":" + birthday + ":"+ phone);
+
+            RegisterRequsetObject registerRequsetObject = new RegisterRequsetObject(username,password,email,phone,birthday, name);
             //TODO: 서버통신
-            Call<SignUpResponseObject> signUp = ApplicationController.getInstance().getNetworkService().signUp(signUpRequsetObject);
-            signUp.enqueue(new Callback<SignUpResponseObject>() {
+            Call<RegisterResponseObject> signUp = ApplicationController.getInstance().getNetworkService().registerUser(registerRequsetObject);
+            signUp.enqueue(new Callback<RegisterResponseObject>() {
                 @Override
-                public void onResponse(Call<SignUpResponseObject> call, Response<SignUpResponseObject> response) {
+                public void onResponse(Call<RegisterResponseObject> call, Response<RegisterResponseObject> response) {
                     if(response.body().err == 1){
                         Toast.makeText(getApplicationContext(), "아이디가 이미 존재합니다", Toast.LENGTH_LONG).show();
                         mTextInputUsername.getEditText().setText("");
@@ -97,16 +108,15 @@ public class RegisterActivity extends AppCompatActivity {
                         mTextInputPassword.setError(null);
                         mTextInputPasswordConfirm.setError(null);
 
-                        //TODO: 다른 방법 생각해 볼 것. 탭 레이아웃으로 전환하는 거 생각해보기
-                        startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
-
                         Log.d("AAA", "에러" +response.body().toString());
+                        finish();
+
                         return;
                     }
                 }
 
                 @Override
-                public void onFailure(Call<SignUpResponseObject> call, Throwable t) {
+                public void onFailure(Call<RegisterResponseObject> call, Throwable t) {
                     Log.d("AAA", t.getMessage());
                 }
             });

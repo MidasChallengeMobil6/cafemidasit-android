@@ -13,7 +13,7 @@ public class ApplicationController extends Application {
 
     private static ApplicationController instance;
 
-    private static String baseUrl = "http://192.168.0.56:8080";
+    public static String baseUrl = "http://192.168.0.44:8080";
 
     private NetworkService networkService;
 
@@ -35,7 +35,6 @@ public class ApplicationController extends Application {
     }
 
     public void buildService() {
-
 
         Retrofit.Builder builder = new Retrofit.Builder();
         Retrofit retrofit = builder
