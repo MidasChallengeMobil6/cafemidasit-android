@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout mTextInputPasswordConfirm;
     private TextInputLayout mTextInputBirthday;
     private TextInputLayout mTextInputPhone;
+
     private Button mSignUpButton;
 
 
@@ -45,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         mTextInputUsername = findViewById(R.id.text_input_username);
         mTextInputPassword = findViewById(R.id.text_input_password);
         mTextInputPasswordConfirm = findViewById(R.id.text_input_password_confirm);
+        mTextInputPhone = findViewById(R.id.text_input_phone);
         mSignUpButton = findViewById(R.id.sign_up_button);
         mTextInputBirthday = findViewById(R.id.text_input_birthday);
         mTextInputPhone = findViewById(R.id.text_input_phone);
@@ -54,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         TextInputEditText usernameEditText = (TextInputEditText) mTextInputUsername.getEditText();
         TextInputEditText passwordEditText = (TextInputEditText) mTextInputPassword.getEditText();
         TextInputEditText passwordConfirmEditText = (TextInputEditText) mTextInputPasswordConfirm.getEditText();
+        TextInputEditText phoneEditText = (TextInputEditText)mTextInputPhone.getEditText();
 
         NameEditText.addTextChangedListener(nameWatcher);
         emailEditText.addTextChangedListener(emailWatcher);

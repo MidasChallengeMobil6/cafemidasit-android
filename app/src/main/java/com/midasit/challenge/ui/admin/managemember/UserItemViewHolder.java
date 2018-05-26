@@ -2,7 +2,7 @@ package com.midasit.challenge.ui.admin.managemember;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.midasit.challenge.R;
@@ -17,6 +17,7 @@ public class UserItemViewHolder extends RecyclerView.ViewHolder{
     TextView joinTv;
     TextView birhhdayTv;
     TextView phoneTv;
+    LinearLayout linearLayout;
 
     public UserItemViewHolder(View itemView) {
         super(itemView);
@@ -24,7 +25,7 @@ public class UserItemViewHolder extends RecyclerView.ViewHolder{
         joinTv = itemView.findViewById(R.id.joindate_tv);
         birhhdayTv = itemView.findViewById(R.id.birthday_tv);
         phoneTv = itemView.findViewById(R.id.phone_tv);
-
+        linearLayout = itemView.findViewById(R.id.user_ll);
     }
 
 

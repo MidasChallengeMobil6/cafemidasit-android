@@ -26,15 +26,11 @@ public class AdminMenuDetailActivity extends AppCompatActivity implements Button
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu_detail);
-
-
-
         Toolbar toolbar = (Toolbar)findViewById(R.id.menu_toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("메뉴 상세화면");
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Button delete_button = (Button)findViewById(R.id.delete_btn);
         delete_button.setOnClickListener(this);
@@ -48,12 +44,12 @@ public class AdminMenuDetailActivity extends AppCompatActivity implements Button
 
         Intent intent = getIntent();
 
-        Bundle eta = intent.getExtras();
-
-//        id = eta.getInt("id");
-        name.setText(eta.getString("name"));
-        price.setText(eta.getInt("price")+"원");
-
+        if(intent!=null){
+            Bundle eta = intent.getExtras();
+            itemId = eta.getInt("itemId");
+            name.setText(eta.getString("name"));
+            price.setText(String.valueOf(eta.getInt("price")));
+        }
 
     }
 
