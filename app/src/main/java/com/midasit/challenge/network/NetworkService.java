@@ -13,6 +13,7 @@ import com.midasit.challenge.model.UserResponseObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -35,6 +36,9 @@ public interface NetworkService {
 
     @POST("/v1/users")
     Call<RegisterResponseObject> registerUser(@Body RegisterRequsetObject object);
+
+    @DELETE("/v1/users")
+    Call<Playlist> getList(@Path("user_id") String userId);
 
 
 }

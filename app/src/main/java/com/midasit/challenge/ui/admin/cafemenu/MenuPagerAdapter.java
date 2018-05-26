@@ -1,5 +1,6 @@
 package com.midasit.challenge.ui.admin.cafemenu;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -23,6 +24,11 @@ public class MenuPagerAdapter extends FragmentStatePagerAdapter {
         }
 
         return fragments[position];
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
     }
 
     private boolean isVaildPosition(int position) {
