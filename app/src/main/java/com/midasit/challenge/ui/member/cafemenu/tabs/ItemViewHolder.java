@@ -2,6 +2,7 @@ package com.midasit.challenge.ui.member.cafemenu.tabs;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.midasit.challenge.R;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder{
 
+    ImageView item_img;
 
     LinearLayout containerLl;
     TextView nameTv;
@@ -23,6 +25,7 @@ public class ItemViewHolder extends RecyclerView.ViewHolder{
         nameTv = itemView.findViewById(R.id.title_tv);
         priceTv = itemView.findViewById(R.id.price_tv);
         containerLl = itemView.findViewById(R.id.container_ll);
+        item_img = itemView.findViewById(R.id.item_img);
 
     }
 
