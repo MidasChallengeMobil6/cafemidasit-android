@@ -13,15 +13,12 @@ import android.widget.Toast;
 
 import com.midasit.challenge.R;
 
-
 public class AdminMenuDetailModifiActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String NAME = "name";
     public static final String PRICE = "price";
     public static final String RESID = "resId";
-    public static final String DESCRIPTION = "description";
 
     EditText name;
-    EditText des;
     ImageView img;
     EditText price;
 
@@ -35,7 +32,6 @@ public class AdminMenuDetailModifiActivity extends AppCompatActivity implements 
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("메뉴 수정화면");
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
 
@@ -45,13 +41,8 @@ public class AdminMenuDetailModifiActivity extends AppCompatActivity implements 
         Button modifi =(Button)findViewById(R.id.modification_btn);
         modifi.setOnClickListener(this);
 
-       // Bitmap bitmap = (Bitmap)intent.getExtras().get(RESID);
         name.setText(intent.getStringExtra(NAME));
         price.setText(intent.getStringExtra(PRICE));
-      //  if(bitmap !=null){
-       //     img.setImageBitmap(bitmap);
-       // }
-//        des.setText(intent.getStringExtra(DESCRIPTION));
     }
 
     @Override
