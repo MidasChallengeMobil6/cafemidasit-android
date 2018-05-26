@@ -58,6 +58,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         String token = responseObject.data.getToken();
                         String authority = responseObject.data.getAdmin();
+                        String id = responseObject.data.getId();
+                        Log.e("아이디", id);
+                        Log.e("Autority", authority);
 
 
                         Log.d("AAA", "로그인 성공" + token + authority);
@@ -66,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = pref.edit();
                         editor.putString("token", responseObject.data.getToken());
                         editor.putString("authority",responseObject.data.getAdmin() );
+                        editor.putString("userId",responseObject.data.getAdmin());
                         editor.commit();
 
                         if (authority.equals("member")) {

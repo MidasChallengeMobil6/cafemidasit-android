@@ -1,14 +1,14 @@
 package com.midasit.challenge.ui.admin;
 
+import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.midasit.challenge.R;
 import com.midasit.challenge.ui.admin.cafemenu.MenuFragment;
 import com.midasit.challenge.ui.admin.managemember.ManageMemberFragment;
+import com.midasit.challenge.ui.admin.reserve.AdminReserveFragment;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -39,7 +39,7 @@ public class AdminActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.order:
-                Fragment orderFragment = new Fragment();
+                AdminReserveFragment orderFragment = new AdminReserveFragment();
                 FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction1.replace(R.id.container, orderFragment);
                 fragmentTransaction1.commit();

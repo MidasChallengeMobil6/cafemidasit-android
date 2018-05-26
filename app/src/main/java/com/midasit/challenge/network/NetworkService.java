@@ -10,7 +10,6 @@ import com.midasit.challenge.model.RegisterResponseObject;
 import com.midasit.challenge.model.ResultObject;
 import com.midasit.challenge.model.SignUpRequsetObject;
 import com.midasit.challenge.model.SignUpResponseObject;
-import com.midasit.challenge.model.User;
 import com.midasit.challenge.model.UserResponseObject;
 
 import okhttp3.MultipartBody;
@@ -24,6 +23,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+
 import retrofit2.http.Query;
 
 
@@ -43,6 +43,7 @@ public interface NetworkService {
 
     @POST("/v1/users")
     Call<RegisterResponseObject> registerUser(@Body RegisterRequsetObject object);
+
 
     @DELETE("/v1/users/{user_id}")
     Call<DeleteUserResponseObject> deleteUser(@Path("user_id") String userId);

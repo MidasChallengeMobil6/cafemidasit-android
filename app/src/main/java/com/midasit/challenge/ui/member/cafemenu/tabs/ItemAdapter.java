@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.midasit.challenge.R;
 import com.midasit.challenge.model.Item;
-import com.midasit.challenge.ui.admin.cafemenu.detail.AdminMenuDetailActivity;
+import com.midasit.challenge.ui.member.cafemenu.reserve.MemberMenuDetailActivity;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder>{
         holder.containerLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, AdminMenuDetailActivity.class);
+                Intent intent = new Intent(mContext, MemberMenuDetailActivity.class);
                 intent.putExtra("id", item.id);
                 intent.putExtra("name", item.name);
                 intent.putExtra("price", item.price);

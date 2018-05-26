@@ -2,14 +2,14 @@ package com.midasit.challenge.ui.member;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.midasit.challenge.R;
 import com.midasit.challenge.ui.admin.BottomNavigationViewHelper;
-import com.midasit.challenge.ui.admin.cafemenu.MenuFragment;
-import com.midasit.challenge.ui.admin.managemember.ManageMemberFragment;
+import com.midasit.challenge.ui.member.cafemenu.MenuFragment;
+import com.midasit.challenge.ui.member.checkreserve.CheckReserveFragment;
+import com.midasit.challenge.ui.member.purchaseform.PurchaseFormFragment;
 
 public class MemberActivity extends AppCompatActivity {
 
@@ -37,7 +37,7 @@ public class MemberActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.order:
-                Fragment orderFragment = new Fragment();
+                CheckReserveFragment orderFragment = new CheckReserveFragment();
                 FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction1.replace(R.id.container, orderFragment);
                 fragmentTransaction1.commit();
@@ -49,7 +49,7 @@ public class MemberActivity extends AppCompatActivity {
                 fragmentTransaction2.commit();
                 return true;
             case R.id.manage:
-                ManageMemberFragment manageFragement = new ManageMemberFragment();
+                PurchaseFormFragment manageFragement = new PurchaseFormFragment();
                 FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction3.replace(R.id.container, manageFragement);
                 fragmentTransaction3.commit();

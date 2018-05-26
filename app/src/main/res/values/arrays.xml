@@ -12,4 +12,9 @@
         <item>X-Large</item>
     </string-array>
 
+    <string-array name="food_type">
+        <item>커피</item>
+        <item>푸드</item>
+    </string-array>
+
 </resources>
