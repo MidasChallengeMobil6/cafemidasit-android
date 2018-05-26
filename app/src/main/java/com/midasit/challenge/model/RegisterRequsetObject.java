@@ -1,7 +1,5 @@
 package com.midasit.challenge.model;
 
-import java.util.ArrayList;
-
 /**
  * Created by ichaeeun on 2018. 5. 26..
  */
@@ -33,5 +31,10 @@ public class RegisterRequsetObject {
         this.phone = phone;
         this.birthday = birthday;
         this.name = name;
+    }
+
+    public RegisterRequsetObject(String email, String phone){
+        this.email = email;
+        this.phone = phone;
     }
 }

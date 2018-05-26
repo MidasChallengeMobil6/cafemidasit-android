@@ -1,10 +1,8 @@
 package com.midasit.challenge.ui.admin.managemember;
 
-import android.support.v7.widget.RecyclerView;
-
-import com.midasit.challenge.model.User;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,15 +11,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.midasit.challenge.R;
-import com.midasit.challenge.application.ApplicationController;
-import com.midasit.challenge.model.Item;
 import com.midasit.challenge.model.User;
 
 import java.util.ArrayList;
-
-import retrofit2.http.HEAD;
 
 /**
  * Created by ichaeeun on 2018. 5. 26..
@@ -54,6 +47,15 @@ public class UserItemAdapter extends RecyclerView.Adapter<UserItemViewHolder>{
         holder.nameTv.setText(user.name + " (" + user.username + ")");
         holder.phoneTv.setText("핸드폰 번호 : " + user.phone);
         holder.joinTv.setText("가입일 : " + user.joinDate);
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=  new Intent(mContext, RegisterModificationActivity.class);
+                intent.putExtra(RegisterModificationActivity.PHONE, user.phone);
+                mContext.startActivity(intent);
+            }
+        });
 
 
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
