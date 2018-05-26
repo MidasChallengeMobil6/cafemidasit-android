@@ -25,6 +25,24 @@
         <activity android:name=".ui.login.LoginActivity"></activity>
         <activity android:name=".ui.admin.managemember.RegisterActivity"></activity>
         <activity android:name=".ui.admin.cafemenu.SearchActivity"></activity>
+        <activity
+            android:name=".ui.admin.cafemenu.detail.AdminMenuDetailModifiActivity"
+            android:parentActivityName=".ui.admin.cafemenu.detail.AdminMenuDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.admin.cafemenu.detail.AdminMenuDetailActivity" />
+        </activity>
+        <activity android:name=".ui.member.cafemenu.reserve.MemberMenuDetailActivity">
+        </activity>
+        <activity android:name=".ui.member.purchaseform.TestActivity">
+
+        </activity>
+        <activity android:name=".ui.admin.cafemenu.detail.AdminMenuDetailActivity"
+            android:parentActivityName=".ui.admin.AdminActivity">
+            <meta-data android:name="android.supoort.PARENT_ACTIVITY"
+                android:value=".ui.admin.AdminActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

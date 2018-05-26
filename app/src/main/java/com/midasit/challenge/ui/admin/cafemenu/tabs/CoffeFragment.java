@@ -44,7 +44,7 @@ public class CoffeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.recyclerview);
-        itemAdapter = new ItemAdapter(getDummyList());
+        itemAdapter = new ItemAdapter(getDummyList(), getActivity());
         recyclerView.setAdapter(itemAdapter);
         Toast.makeText(getActivity(), "onViewCreated", Toast.LENGTH_LONG).show();
 
