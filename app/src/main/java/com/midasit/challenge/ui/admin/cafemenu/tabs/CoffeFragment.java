@@ -11,13 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-
 import com.midasit.challenge.R;
 import com.midasit.challenge.application.ApplicationController;
 import com.midasit.challenge.model.Item;
 import com.midasit.challenge.model.ItemResponseObject;
-import com.midasit.challenge.model.User;
-import com.midasit.challenge.ui.admin.managemember.UserItemAdapter;
 
 import java.util.ArrayList;
 
@@ -55,8 +52,6 @@ public class CoffeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
 
         recyclerView.setAdapter(itemAdapter);
-
-
 
 
     }

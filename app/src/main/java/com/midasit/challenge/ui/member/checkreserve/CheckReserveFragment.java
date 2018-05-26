@@ -8,6 +8,7 @@ package com.midasit.challenge.ui.member.checkreserve;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,22 @@ import android.widget.TextView;
 
 import com.midasit.challenge.R;
 
+import java.net.URISyntaxException;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CheckReserveFragment extends Fragment {
 
+    Handler handler;
     TextView conditionView;
     private int condition = 0; // 0 신청, 1 준비중, 2 완료
+
+    private Socket mSocket;
     public CheckReserveFragment() {
         // Required empty public constructor
     }
@@ -34,7 +44,7 @@ public class CheckReserveFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_check_reserve, container, false);
         conditionView = view.findViewById(R.id.reserve_condition_tv);
-        Handler handler =new Handler();
+        handler =new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -74,7 +84,30 @@ public class CheckReserveFragment extends Fragment {
                 condition = 2;
             }
         });
+
+
+        //소켓 통신 시도
+        try{
+            mSocket = IO.socket("http://192.168.0.44:8080");
+            mSocket.connect();
+            Log.e("11111", "잘되요");
+            mSocket.on("my event", new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    Log.e("22222", "잘되요");
+                    String str = args[1].toString();
+                    Log.e("3333",str);
+                }
+            });
+        }catch (URISyntaxException e){
+            e.printStackTrace();
+        }
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeMessages(0);
+    }
 }

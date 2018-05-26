@@ -13,10 +13,12 @@ public class LoginResponseObject {
     public class LoginData {
         private String token;
         private String authority;
+        private String userId;
 
-        public LoginData(String token, String admin) {
+        public LoginData(String token, String admin, String userId) {
             this.token = token;
             this.authority = admin;
+            this.userId = userId;
         }
 
         public String getToken() {
@@ -26,5 +28,7 @@ public class LoginResponseObject {
         public String getAdmin() {
             return authority;
         }
+
+        public String getId() { return userId; }
     }
 }

@@ -16,8 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.midasit.challenge.R;
-import com.midasit.challenge.ui.admin.cafemenu.tabs.CoffeFragment;
-import com.midasit.challenge.ui.admin.cafemenu.tabs.FoodFragment;
+import com.midasit.challenge.ui.member.cafemenu.tabs.CoffeFragment;
+import com.midasit.challenge.ui.member.cafemenu.tabs.FoodFragment;
 
 
 /**
@@ -71,6 +71,7 @@ public class MenuFragment extends Fragment {
 //        initSpinnerViewType(spinnerViewType);
     }
 
+
     public void initTabPager(ViewPager pager, TabLayout tabLayout) {
         pagerAdapter = new MenuPagerAdapter(getFragmentManager());
 
@@ -92,6 +93,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 pager.setCurrentItem(tab.getPosition());
+
             }
 
             @Override
