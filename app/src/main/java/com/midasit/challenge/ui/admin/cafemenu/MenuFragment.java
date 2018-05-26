@@ -4,6 +4,7 @@ package com.midasit.challenge.ui.admin.cafemenu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.midasit.challenge.R;
+import com.midasit.challenge.ui.admin.cafemenu.detail.AdminMenuDetailAddActivity;
 import com.midasit.challenge.ui.admin.cafemenu.tabs.CoffeFragment;
 import com.midasit.challenge.ui.admin.cafemenu.tabs.FoodFragment;
 
@@ -57,6 +59,14 @@ public class MenuFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tab);
         spinnerSort = view.findViewById(R.id.spinner_sort);
         toolbar = view.findViewById(R.id.toolbar);
+        FloatingActionButton fab = view.findViewById(R.id.addmenu_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AdminMenuDetailAddActivity.class);
+                startActivity(intent);
+            }
+        });
 
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override

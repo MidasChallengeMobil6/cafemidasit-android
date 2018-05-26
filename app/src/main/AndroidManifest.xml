@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.admin.AdminActivity"></activity>
+        <activity android:name=".ui.admin.AdminActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.admin.managemember.RegisterActivity"></activity>
+        <activity android:name=".ui.admin.managemember.RegisterActivity" />
         <activity android:name=".ui.admin.cafemenu.SearchActivity" />
         <activity
             android:name=".ui.admin.cafemenu.detail.AdminMenuDetailModifiActivity"
@@ -32,8 +32,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.admin.cafemenu.detail.AdminMenuDetailActivity" />
         </activity>
-        <activity android:name=".ui.member.cafemenu.reserve.MemberMenuDetailActivity"></activity>
-        <activity android:name=".ui.member.purchaseform.TestActivity"></activity>
+        <activity android:name=".ui.member.cafemenu.reserve.MemberMenuDetailActivity" />
+        <activity android:name=".ui.member.purchaseform.TestActivity" />
         <activity
             android:name=".ui.admin.cafemenu.detail.AdminMenuDetailActivity"
             android:parentActivityName=".ui.admin.AdminActivity">
@@ -41,8 +41,9 @@
                 android:name="android.supoort.PARENT_ACTIVITY"
                 android:value=".ui.admin.AdminActivity" />
         </activity>
-        <activity android:name=".ui.member.MemberActivity"></activity>
-        <activity android:name=".ui.admin.managemember.RegisterModificationActivity"></activity>
+        <activity android:name=".ui.member.MemberActivity" />
+        <activity android:name=".ui.admin.managemember.RegisterModificationActivity" />
+        <activity android:name=".ui.admin.cafemenu.detail.AdminMenuDetailAddActivity"></activity>
     </application>
 
 </manifest>
