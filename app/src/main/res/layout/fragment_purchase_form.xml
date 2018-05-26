@@ -62,10 +62,10 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/monthlyforward"
-                android:src="@drawable/forward"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/forward" />
 
         </LinearLayout>
 
