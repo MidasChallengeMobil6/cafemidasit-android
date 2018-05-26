@@ -59,17 +59,17 @@ public class UserItemAdapter extends RecyclerView.Adapter<UserItemViewHolder>{
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(linearLayout.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(linearLayout.getContext(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(linearLayout.getContext(), "취소되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "취소되었습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setTitle("삭제");
