@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.midasit.challenge.ui.admin.managemember.ManageMemberFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white">
+
+        <TextView
+            android:text="회원정보"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:background="@color/warm_grey"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            app:layoutManager="LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/fab_post"-->
+        <!--android:background="@drawable/fab_post"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_gravity="bottom|right"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:layout_marginBottom="16dp"/>-->
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="14dp"
+            android:layout_gravity="bottom|right"
+            android:id="@+id/addmember_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:tint="@color/red_pink"
+            android:src="@drawable/add" />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

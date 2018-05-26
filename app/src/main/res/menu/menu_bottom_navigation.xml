@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search"
+        android:title="메뉴"
+        android:icon="@drawable/search2"
+        app:showAsAction="always"
+        android:enabled="true"/>
+
+
+    <item
+        android:id="@+id/order"
+        android:title="예약게시판"
+        android:icon="@drawable/home"
+        app:showAsAction="always"
+        android:enabled="true"/>
+
+
+    <!--<item-->
+        <!--android:id="@+id/like"-->
+        <!--android:title="중요"-->
+        <!--android:icon="@drawable/heart_2"-->
+        <!--app:showAsAction="always"-->
+        <!--android:enabled="true"/>-->
+
+    <!--<item-->
+        <!--android:id="@+id/alarm"-->
+        <!--android:title="알림"-->
+        <!--android:icon="@drawable/notification"-->
+        <!--app:showAsAction="always"-->
+        <!--android:enabled="true"/>-->
+
+    <item
+        android:id="@+id/manage"
+        android:title="회원관리"
+        android:icon="@drawable/mypage"
+        app:showAsAction="always"
+        android:enabled="true"/>
+
+</menu>

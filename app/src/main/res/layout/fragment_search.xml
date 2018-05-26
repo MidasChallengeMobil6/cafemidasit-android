@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:textSize="14sp"
+            android:text="초기화"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/warm_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.constraint.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/search_background">
+
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="14dp"
+                android:background="@null"
+                android:src="@drawable/ic_search"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/search_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:hint="배우고 싶은 재능을 찾아보세요!"
+                android:background="@android:color/transparent"
+                android:gravity="left"
+                android:textSize="14sp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/search_button"
+                app:layout_constraintTop_toTopOf="parent" >
+            <requestFocus />
+            </EditText>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/search_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="110dp"
+        android:text="관심 분야의 키워드를 검색하고\n피드백을 남겨보세요."
+        android:gravity="center"
+        android:textColor="#9e9e9e"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/search_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_detail" />
+
+</android.support.constraint.ConstraintLayout>
