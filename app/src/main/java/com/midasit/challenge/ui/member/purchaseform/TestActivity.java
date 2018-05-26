@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.midasit.challenge.R;
+import com.midasit.challenge.ui.member.checkreserve.CheckReserveFragment;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class TestActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.replace(R.id.testContainer, new PurchaseFormFragment());
+        fragmentTransaction.replace(R.id.testContainer, new CheckReserveFragment());
         fragmentTransaction.commit();
     }
 }
