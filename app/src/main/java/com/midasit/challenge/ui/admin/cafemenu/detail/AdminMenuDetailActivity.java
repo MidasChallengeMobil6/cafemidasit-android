@@ -47,7 +47,7 @@ public class AdminMenuDetailActivity extends AppCompatActivity implements Button
             Bundle eta = intent.getExtras();
             itemId = eta.getInt("itemId");
             name.setText(eta.getString("name"));
-            price.setText(eta.getInt("price")+"원");
+            price.setText(String.valueOf(eta.getInt("price")));
         }
 
     }
