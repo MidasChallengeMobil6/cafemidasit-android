@@ -29,7 +29,7 @@ public class AdminReserveFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_admin_reserve, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.reserve_recycler);
         RecyclerReserveAdapter adapter = new RecyclerReserveAdapter(new String[]{"아메리카노", "홍차"}, new String[]{"2", "1"}
-        , new String[]{"2000", "3000"}, new String[]{"홍길동(21546)", "김철수(5153)"});
+        , new String[]{"2000", "3000"}, new String[]{"홍길동(21546)", "김철수(5153)"}, new String[]{"2018.03.06", "2018.05.27"});
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);

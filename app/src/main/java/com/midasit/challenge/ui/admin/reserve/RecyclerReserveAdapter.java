@@ -16,12 +16,14 @@ public class RecyclerReserveAdapter extends RecyclerView.Adapter<RecyclerReserve
     private String[] nums;
     private String[] prices;
     private String[] names;
+    private String[] days;
 
-    RecyclerReserveAdapter(String[] menus, String[] nums, String[] prices , String[] names){
+    RecyclerReserveAdapter(String[] menus, String[] nums, String[] prices , String[] names, String[] days){
         this.menus = menus;
         this.nums = nums;
         this.prices = prices;
         this.names = names;
+        this.days = days;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -47,11 +49,13 @@ public class RecyclerReserveAdapter extends RecyclerView.Adapter<RecyclerReserve
         TextView nameView = (TextView)cardView.findViewById(R.id.reserve_list_name);
         TextView priceView = (TextView)cardView.findViewById(R.id.reserve_list_price);
         Button checkoutBtn = (Button)cardView.findViewById(R.id.checkout_done_btn);
+        TextView dayView = (TextView)cardView.findViewById(R.id.reserve_list_days);
 
         menuView.setText(menus[position]);
         numView.setText(nums[position]);
         nameView.setText(names[position]);
         priceView.setText(prices[position]);
+        dayView.setText(days[position]);
 
         // 예약 확인 완료 버튼 리스너 설정
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
