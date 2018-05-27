@@ -52,7 +52,7 @@ public class AdminActivity extends AppCompatActivity {
                 fragmentTransaction2.commit();
                 return true;
             case R.id.manage:
-                AdminReserveFragment adminReserveFragment = new AdminReserveFragment();
+                ManageMemberFragment adminReserveFragment = new ManageMemberFragment();
                 FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction3.replace(R.id.container, adminReserveFragment);
                 fragmentTransaction3.commit();

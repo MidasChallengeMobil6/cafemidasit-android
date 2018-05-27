@@ -9,6 +9,7 @@ import com.midasit.challenge.model.OrderRequestObject;
 import com.midasit.challenge.model.PurchasesResponseObject;
 import com.midasit.challenge.model.RegisterRequsetObject;
 import com.midasit.challenge.model.RegisterResponseObject;
+import com.midasit.challenge.model.ReserveResponseObject;
 import com.midasit.challenge.model.ResultObject;
 import com.midasit.challenge.model.SignUpRequsetObject;
 import com.midasit.challenge.model.SignUpResponseObject;
@@ -25,7 +26,6 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
-
 import retrofit2.http.Query;
 
 
@@ -47,13 +47,19 @@ public interface NetworkService {
     Call<PurchasesResponseObject> getPurchases(@Query("userid") String user_id,
                                                @Query("year") String year,
                                                @Query("month") String month);
+    @GET("/v1/orders")
+    Call<ReserveResponseObject> getPurchases2();
 
     @POST("/v1/users")
     Call<RegisterResponseObject> registerUser(@Body RegisterRequsetObject object);
 
 
+
     @DELETE("/v1/users/{user_id}")
     Call<DeleteUserResponseObject> deleteUser(@Path("user_id") String userId);
+
+    @PUT("/v1/users/{order_id}/{status}")
+    Call<ResultObject> updateStatus(@Path("order_id") String order_id, @Path("status") String status);
 
 
     // TODO 3: 메뉴 추가

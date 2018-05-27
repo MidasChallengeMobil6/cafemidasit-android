@@ -9,9 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.midasit.challenge.R;
+import com.midasit.challenge.application.ApplicationController;
+import com.midasit.challenge.model.Reserve;
+
+import java.util.ArrayList;
 
 public class RecyclerReserveAdapter extends RecyclerView.Adapter<RecyclerReserveAdapter.ViewHolder> {
 
+    private ArrayList<Reserve> mDataset;
+
+    int order_id;
     private String[] menus;
     private String[] nums;
     private String[] prices;
@@ -25,6 +32,11 @@ public class RecyclerReserveAdapter extends RecyclerView.Adapter<RecyclerReserve
         this.names = names;
         this.days = days;
     }
+
+    RecyclerReserveAdapter(ArrayList<Reserve> dataset) {
+        mDataset = dataset;
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
@@ -51,25 +63,33 @@ public class RecyclerReserveAdapter extends RecyclerView.Adapter<RecyclerReserve
         Button checkoutBtn = (Button)cardView.findViewById(R.id.checkout_done_btn);
         TextView dayView = (TextView)cardView.findViewById(R.id.reserve_list_days);
 
-        menuView.setText(menus[position]);
-        numView.setText(nums[position]);
-        nameView.setText(names[position]);
-        priceView.setText(prices[position]);
-        dayView.setText(days[position]);
+        Reserve reserve = mDataset.get(position);
+
+
+        order_id = reserve.orderId;
+        menuView.setText(reserve.itemname);
+        numView.setText(String.valueOf(reserve.quantity));
+        nameView.setText(reserve.username);
+        priceView.setText(String.valueOf(reserve.price));
+        dayView.setText(reserve.paymentDate);
 
         // 예약 확인 완료 버튼 리스너 설정
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView textView = (TextView)v;
-                if(textView.getText().toString().equals("예약")){
+                if(reserve.status.equals("new")){
+                    //v1/orders/order_id/ready
                     textView.setText("준비");
+                    ApplicationController.getInstance().getNetworkService().updateStatus(String.valueOf(order_id), "ready");
                     textView.setBackgroundColor(v.getResources().getColor(R.color.yellow));
-                }else if(textView.getText().toString().equals("준비")){
+                }else if(reserve.status.equals("ready")){
                     textView.setText("완료");
+                    ApplicationController.getInstance().getNetworkService().updateStatus(String.valueOf(order_id), "completed");
                     textView.setBackgroundColor(v.getResources().getColor(R.color.dodger_blue));
-                }else if(textView.getText().toString().equals("완료")){
+                }else if(reserve.status.equals("completed")){
                     textView.setText("예약");
+                    ApplicationController.getInstance().getNetworkService().updateStatus(String.valueOf(order_id), "new");
                     textView.setBackgroundColor(v.getResources().getColor(R.color.greenish_teal));
                 }
             }
@@ -79,6 +99,6 @@ public class RecyclerReserveAdapter extends RecyclerView.Adapter<RecyclerReserve
 
     @Override
     public int getItemCount() {
-        return menus.length;
+        return mDataset == null ? 0 : mDataset.size() ;
     }
 }

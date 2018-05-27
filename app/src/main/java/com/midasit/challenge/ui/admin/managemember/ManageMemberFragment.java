@@ -64,7 +64,6 @@ public class ManageMemberFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
 
 
-        Toast.makeText(getActivity(), "onViewCreated", Toast.LENGTH_LONG).show();
 
 
 
