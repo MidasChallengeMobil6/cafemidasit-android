@@ -5,6 +5,8 @@ import com.midasit.challenge.model.DeleteUserResponseObject;
 import com.midasit.challenge.model.ItemResponseObject;
 import com.midasit.challenge.model.LoginRequestObject;
 import com.midasit.challenge.model.LoginResponseObject;
+import com.midasit.challenge.model.OrderRequestObject;
+import com.midasit.challenge.model.PurchasesResponseObject;
 import com.midasit.challenge.model.RegisterRequsetObject;
 import com.midasit.challenge.model.RegisterResponseObject;
 import com.midasit.challenge.model.ResultObject;
@@ -41,6 +43,11 @@ public interface NetworkService {
     @GET("/v1/items")
     Call<ItemResponseObject> getItems(@Query("category") String category);
 
+    @GET("/v1/orders")
+    Call<PurchasesResponseObject> getPurchases(@Query("userid") String user_id,
+                                               @Query("year") String year,
+                                               @Query("month") String month);
+
     @POST("/v1/users")
     Call<RegisterResponseObject> registerUser(@Body RegisterRequsetObject object);
 
@@ -67,5 +74,10 @@ public interface NetworkService {
     // TODO 2: 메뉴 삭제
     @DELETE("/v1/items/{item_id}")
     Call<ResultObject> deleteItem(@Path("item_id") String userId);
+
+    @POST("/v1/orders")
+    Call<ResultObject> orderItem(@Body OrderRequestObject object);
+
+
 
 }

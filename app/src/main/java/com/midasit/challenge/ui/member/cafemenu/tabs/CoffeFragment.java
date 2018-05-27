@@ -70,7 +70,6 @@ public class CoffeFragment extends Fragment {
             }
         });
 
-        Toast.makeText(getActivity(), "Coffee - onResume", Toast.LENGTH_LONG).show();
 
     }
 
@@ -81,7 +80,6 @@ public class CoffeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         itemAdapter = new ItemAdapter(getDummyList(), getActivity());
         recyclerView.setAdapter(itemAdapter);
-        Toast.makeText(getActivity(), "onViewCreated", Toast.LENGTH_LONG).show();
 
     }
 

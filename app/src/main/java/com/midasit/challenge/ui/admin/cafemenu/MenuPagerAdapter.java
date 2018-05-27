@@ -9,6 +9,7 @@ public class MenuPagerAdapter extends FragmentStatePagerAdapter {
 
     private Fragment[] fragments;
 
+
     public MenuPagerAdapter(FragmentManager fm) {
         super(fm);
     }

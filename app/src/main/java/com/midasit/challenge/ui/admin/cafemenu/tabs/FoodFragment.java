@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.midasit.challenge.R;
 import com.midasit.challenge.application.ApplicationController;
@@ -80,7 +79,6 @@ public class FoodFragment extends Fragment {
             }
         });
 
-        Toast.makeText(getActivity(), "Food - onResume", Toast.LENGTH_LONG).show();
     }
 
     private ArrayList<Item> getDummyList(){

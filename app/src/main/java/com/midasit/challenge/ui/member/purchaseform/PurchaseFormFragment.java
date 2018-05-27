@@ -2,8 +2,10 @@ package com.midasit.challenge.ui.member.purchaseform;
 
 
 import android.app.DatePickerDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,22 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.midasit.challenge.R;
+import com.midasit.challenge.application.ApplicationController;
+import com.midasit.challenge.model.Purchase;
+import com.midasit.challenge.model.PurchasesResponseObject;
+import com.midasit.challenge.model.User;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,10 @@ public class PurchaseFormFragment extends Fragment implements View.OnClickListen
 
     TextView yearText;
     TextView monthText;
+
+    RecyclerView recyclerView;
+    int userid;
+
 
     public PurchaseFormFragment() {
         // Required empty public constructor
@@ -35,6 +53,7 @@ public class PurchaseFormFragment extends Fragment implements View.OnClickListen
         // Inflate the layout for this fragment
         View view = (View)inflater.inflate(R.layout.fragment_purchase_form, container, false);
         LinearLayout monthClick= (LinearLayout)view.findViewById(R.id.select_month_ll);
+        recyclerView = view.findViewById(R.id.monthlyrecycler);
 
         // 월년일 다이얼로그 띄우기
         monthClick.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +96,42 @@ public class PurchaseFormFragment extends Fragment implements View.OnClickListen
         forwardButton.setOnClickListener(this);
         backwardButton.setOnClickListener(this);
 
+        SharedPreferences sf = getActivity().getSharedPreferences("token", MODE_PRIVATE);
+
+        userid = sf.getInt("userId", 0);
+
+
+
+
+        Call<PurchasesResponseObject> purchasesResponseObjectCall   = ApplicationController.getInstance().getNetworkService().getPurchases(String.valueOf(userid), String.valueOf(yearText.getText()),String.valueOf(monthText.getText()));
+        purchasesResponseObjectCall.enqueue(new Callback<PurchasesResponseObject>() {
+            @Override
+            public void onResponse(Call<PurchasesResponseObject> call, Response<PurchasesResponseObject> response) {
+                PurchasesResponseObject a = response.body();
+                ArrayList<Purchase> list = response.body().data;
+
+                if (a.err == 0) { // 성공
+                    PurchaseItemAdapter adapter;
+                    adapter = new PurchaseItemAdapter(list);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                } else {    // 실패
+                    Toast.makeText(getContext(), "예약이 하나도 없습니다.",Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PurchasesResponseObject> call, Throwable t) {
+
+            }
+        });
+
+
+
+
         return view;
     }
 
@@ -85,9 +140,59 @@ public class PurchaseFormFragment extends Fragment implements View.OnClickListen
         switch (v.getId()){
             case R.id.monthlyforward:
                 changeMonths(1);
+                Call<PurchasesResponseObject> purchasesResponseObjectCall   = ApplicationController.getInstance().getNetworkService().getPurchases(String.valueOf(userid), String.valueOf(yearText.getText()),String.valueOf(monthText.getText()));
+                purchasesResponseObjectCall.enqueue(new Callback<PurchasesResponseObject>() {
+                    @Override
+                    public void onResponse(Call<PurchasesResponseObject> call, Response<PurchasesResponseObject> response) {
+                        PurchasesResponseObject a = response.body();
+                        ArrayList<Purchase> list = response.body().data;
+
+                        if (a.err == 0) { // 성공
+                            PurchaseItemAdapter adapter;
+                            adapter = new PurchaseItemAdapter(list);
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+                        } else {    // 실패
+                            Toast.makeText(getContext(), "예약이 하나도 없습니다.",Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<PurchasesResponseObject> call, Throwable t) {
+
+                    }
+                });
                 break;
             case R.id.monthlybackward:
                 changeMonths(-1);
+                Call<PurchasesResponseObject> purchasesResponseObjectCall2   = ApplicationController.getInstance().getNetworkService().getPurchases(String.valueOf(userid), String.valueOf(yearText.getText()),String.valueOf(monthText.getText()));
+                purchasesResponseObjectCall2.enqueue(new Callback<PurchasesResponseObject>() {
+                    @Override
+                    public void onResponse(Call<PurchasesResponseObject> call, Response<PurchasesResponseObject> response) {
+                        PurchasesResponseObject a = response.body();
+                        ArrayList<Purchase> list = response.body().data;
+
+                        if (a.err == 0) { // 성공
+                            PurchaseItemAdapter adapter;
+                            adapter = new PurchaseItemAdapter(list);
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+                        } else {    // 실패
+                            Toast.makeText(getContext(), "예약이 하나도 없습니다.",Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<PurchasesResponseObject> call, Throwable t) {
+
+                    }
+                });
                 break;
         }
     }
